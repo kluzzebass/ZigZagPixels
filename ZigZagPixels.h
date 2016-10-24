@@ -11,15 +11,6 @@
 
 #include <Adafruit_NeoPixel.h>
 
-// The default is rows, starting in the lower left corner, so there's no need
-// to define these as anything but 0.
-#define ZZP_ROWS 0b000
-#define ZZP_LEFT 0b000
-#define ZZP_BOTTOM 0b000
-
-#define ZZP_COLUMNS 0b001
-#define ZZP_RIGHT 0b010
-#define ZZP_TOP 0b100
 
 enum layout_t {
 	ZZP_LOWER_LEFT_ROWS		=	0b000,
@@ -30,7 +21,7 @@ enum layout_t {
 	ZZP_UPPER_LEFT_COLUMNS	=	0b101,
 	ZZP_UPPER_RIGHT_ROWS	=	0b110,
 	ZZP_UPPER_RIGHT_COLUMNS	=	0b111
-}
+};
 
 #define ZZP_MESIAL_BIT		2
 #define ZZP_LATERAL_BIT		1
@@ -53,18 +44,29 @@ class ZigZagPixels {
 	
 		bool initialized();
 
+		void setPixelColor(uint8_t x, uint8_t y, uint8_t r, uint8_t g, uint8_t b);
+		void setPixelColor(uint8_t x, uint8_t y, uint8_t r, uint8_t g, uint8_t b, uint8_t w);
+		void setPixelColor(uint8_t x, uint8_t y, uint32_t c);
+
+
+		// These functions simply mirror the NeoPixel library functions
+		void setBrightness(uint8_t brightness);
+		uint8_t getBrightness();
+		void clear();
+
 	private:
-		Adafruit_NeoPixel *pixels;
+		Adafruit_NeoPixel *_pixels;
 
-		bool initialized;
-		bool upper;
-		bool right;
-		bool columns;
+		bool _initialized;
+		bool _upper;
+		bool _right;
+		bool _columns;
 
-		uint8_t width;
-		uint8_t height;
+		uint8_t _width;
+		uint8_t _height;
 
 		void checkInitialization();
+		uint16_t calcPixelNum(uint8_t x, uint8_t y);
 };
 
 

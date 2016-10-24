@@ -4,21 +4,38 @@
 # Class
 #######################################
 
-ZigZagPixels	KEYWORD1
+ZigZagPixels			KEYWORD1
 
 #######################################
 # Methods and Functions 
 #######################################	
 
-fill			KEYWORD2
+setPixels				KEYWORD2
+setDimensions			KEYWORD2
+setLayout				KEYWORD2
+getPixels				KEYWORD2
+getWidth				KEYWORD2
+getHeight				KEYWORD2
+getLayout				KEYWORD2
+initialized				KEYWORD2
+setPixelColor			KEYWORD2
+setBrightness			KEYWORD2
+getBrightness			KEYWORD2
+clear					KEYWORD2
 
 #######################################
 # Constants
 #######################################
  
-ZZP_COLUMNS		LITERAL1
-ZZP_ROWS		LITERAL1
-ZZP_LEFT		LITERAL1
-ZZP_RIGHT		LITERAL1
-ZZP_TOP			LITERAL1
-ZZP_BOTTOM		LITERAL1
+ZZP_LOWER_LEFT_ROWS		LITERAL1
+ZZP_LOWER_LEFT_COLUMNS	LITERAL1
+ZZP_LOWER_RIGHT_ROWS	LITERAL1
+ZZP_LOWER_RIGHT_COLUMNS	LITERAL1
+ZZP_UPPER_LEFT_ROWS		LITERAL1
+ZZP_UPPER_LEFT_COLUMNS	LITERAL1
+ZZP_UPPER_RIGHT_ROWS	LITERAL1
+ZZP_UPPER_RIGHT_COLUMNS	LITERAL1
+
+ZZP_MESIAL_BIT			LITERAL1
+ZZP_LATERAL_BIT			LITERAL1
+ZZP_ORIENTATION_BIT		LITERAL1
