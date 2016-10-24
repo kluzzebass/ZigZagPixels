@@ -1,0 +1,24 @@
+#######################################
+# Syntax Coloring Map For ZigZagPixels
+####################################### 
+# Class
+#######################################
+
+ZigZagPixels	KEYWORD1
+
+#######################################
+# Methods and Functions 
+#######################################	
+
+fill			KEYWORD2
+
+#######################################
+# Constants
+#######################################
+ 
+ZZP_COLUMNS		LITERAL1
+ZZP_ROWS		LITERAL1
+ZZP_LEFT		LITERAL1
+ZZP_RIGHT		LITERAL1
+ZZP_TOP			LITERAL1
+ZZP_BOTTOM		LITERAL1
