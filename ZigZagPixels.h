@@ -32,11 +32,13 @@ enum layout_t {
 	ZZP_UPPER_RIGHT_COLUMNS	=	0b111
 }
 
-
+#define ZZP_MESIAL_BIT		2
+#define ZZP_LATERAL_BIT		1
+#define ZZP_ORIENTATION_BIT	0
 
 class ZigZagPixels {
 	public:
-		ZigZagPixels(Adafruit_NeoPixel *pixels, uint8_t width, uint8_t height, uint8_t layout = 0);
+		ZigZagPixels(Adafruit_NeoPixel *pixels, uint8_t width, uint8_t height, layout_t layout = ZZP_LOWER_LEFT_ROWS);
 		ZigZagPixels(void);
 		~ZigZagPixels();
 
@@ -51,7 +53,6 @@ class ZigZagPixels {
 	
 		bool initialized();
 
-
 	private:
 		Adafruit_NeoPixel *pixels;
 
@@ -64,7 +65,7 @@ class ZigZagPixels {
 		uint8_t height;
 
 		void checkInitialization();
-}
+};
 
 
 #endif /* __ZigZagPixels_h__ */
