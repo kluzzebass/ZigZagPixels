@@ -9,63 +9,50 @@
 #ifndef __ZigZagPixels_h__
 # define __ZigZagPixels_h__
 
+#ifdef __AVR__
+  #include <avr/power.h>
+#endif
+
 #include <Adafruit_NeoPixel.h>
-
-
-enum layout_t {
-	ZZP_LOWER_LEFT_ROWS		=	0b000,
-	ZZP_LOWER_LEFT_COLUMNS	=	0b001,
-	ZZP_LOWER_RIGHT_ROWS	=	0b010,
-	ZZP_LOWER_RIGHT_COLUMNS	=	0b011,
-	ZZP_UPPER_LEFT_ROWS		=	0b100,
-	ZZP_UPPER_LEFT_COLUMNS	=	0b101,
-	ZZP_UPPER_RIGHT_ROWS	=	0b110,
-	ZZP_UPPER_RIGHT_COLUMNS	=	0b111
-};
 
 #define ZZP_MESIAL_BIT		2
 #define ZZP_LATERAL_BIT		1
 #define ZZP_ORIENTATION_BIT	0
 
-class ZigZagPixels {
+class ZigZagPixels : public Adafruit_NeoPixel {
 	public:
-		ZigZagPixels(Adafruit_NeoPixel *pixels, uint8_t width, uint8_t height, layout_t layout = ZZP_LOWER_LEFT_ROWS);
+		enum Layout {
+			LowerLeftRows		=	0b000,
+			LowerLeftColumns	=	0b001,
+			LowerRightRows		=	0b010,
+			LowerRightColumns	=	0b011,
+			UpperLeftRows		=	0b100,
+			UpperLeftColumns	=	0b101,
+			UpperRightRows		=	0b110,
+			UpperRightColumns	=	0b111
+		};
+
+		ZigZagPixels(uint8_t w, uint8_t h, ZigZagPixels::Layout l, uint8_t p, neoPixelType t);
 		ZigZagPixels(void);
-		~ZigZagPixels();
 
-		void setPixels(Adafruit_NeoPixel *pixels);
-		void setDimensions(uint8_t width, uint8_t height);
-		void setLayout(uint8_t layout);
+		void setWidth(uint8_t w) { width = w; };
+		void setHeight(uint8_t h) { height = h; };
+		void setLayout(Layout l) { layout = l; };
 
-		Adafruit_NeoPixel *getPixels();
-		uint8_t getWidth();
-		uint8_t getHeight();
-		uint8_t getLayout();
-	
-		bool initialized();
+		uint8_t getWidth() { return width; };
+		uint8_t getHeight() { return height; };
+		Layout getLayout() { return layout; };
 
 		void setPixelColor(uint8_t x, uint8_t y, uint8_t r, uint8_t g, uint8_t b);
 		void setPixelColor(uint8_t x, uint8_t y, uint8_t r, uint8_t g, uint8_t b, uint8_t w);
 		void setPixelColor(uint8_t x, uint8_t y, uint32_t c);
 
 
-		// These functions simply mirror the NeoPixel library functions
-		void setBrightness(uint8_t brightness);
-		uint8_t getBrightness();
-		void clear();
-
 	private:
-		Adafruit_NeoPixel *_pixels;
+		uint8_t width;
+		uint8_t height;
+		ZigZagPixels::Layout layout;
 
-		bool _initialized;
-		bool _upper;
-		bool _right;
-		bool _columns;
-
-		uint8_t _width;
-		uint8_t _height;
-
-		void checkInitialization();
 		uint16_t calcPixelNum(uint8_t x, uint8_t y);
 };
 

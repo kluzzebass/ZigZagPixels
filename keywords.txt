@@ -12,16 +12,25 @@ ZigZagPixels			KEYWORD1
 
 setPixels				KEYWORD2
 setDimensions			KEYWORD2
+setPin					KEYWORD2
 setLayout				KEYWORD2
+setNeoPixelType			KEYWORD2
+
 getPixels				KEYWORD2
 getWidth				KEYWORD2
 getHeight				KEYWORD2
+getPin					KEYWORD2
 getLayout				KEYWORD2
+getNeoPixelType			KEYWORD2
+
 initialized				KEYWORD2
+
 setPixelColor			KEYWORD2
+
 setBrightness			KEYWORD2
 getBrightness			KEYWORD2
 clear					KEYWORD2
+show					KEYWORD2
 
 #######################################
 # Constants
