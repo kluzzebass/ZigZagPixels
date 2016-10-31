@@ -8,22 +8,15 @@
 #include <ZigZagPixels.h>
 
 ZigZagPixels::ZigZagPixels(
-	uint8_t w,
-	uint8_t h,
+	uint8_t w, uint8_t h,
 	ZigZagPixels::Layout l = ZigZagPixels::Layout::LowerLeftRows,
 	ZigZagPixels::Origin o = ZigZagPixels::Origin::LowerLeft,
-	uint8_t p = 6,
-	neoPixelType t = NEO_GRB + NEO_KHZ800
-) :
-	width(w),
-	height(h),
-	layout(l),
-	Adafruit_NeoPixel(w * h, p, t) {
+	uint8_t p = 6, neoPixelType t = NEO_GRB + NEO_KHZ800
+) :	width(w), height(h),layout(l), Adafruit_NeoPixel(w * h, p, t) {
 }
 
 ZigZagPixels::ZigZagPixels(void) :
-	width(1),
-	height(1),
+	width(1), height(1),
 	layout(ZigZagPixels::Layout::LowerLeftRows),
 	origin(ZigZagPixels::Origin::LowerLeft),
 	Adafruit_NeoPixel() {
