@@ -58,6 +58,8 @@ class ZigZagPixels : public Adafruit_NeoPixel {
 
 		uint32_t getPixelColor(uint8_t x, uint8_t y);
 
+		void debug();
+
 	protected:
 		uint8_t width;
 		uint8_t height;
