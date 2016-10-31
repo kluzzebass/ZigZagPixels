@@ -32,26 +32,37 @@ class ZigZagPixels : public Adafruit_NeoPixel {
 			UpperRightColumns	=	0b111
 		};
 
-		ZigZagPixels(uint8_t w, uint8_t h, ZigZagPixels::Layout l, uint8_t p, neoPixelType t);
+		enum Origin {
+			LowerLeft			=	0b00,
+			LowerRight			=	0b01,
+			UpperLeft			=	0b10,
+			UpperRight			=	0b11
+		};
+
+		ZigZagPixels(uint8_t w, uint8_t h, ZigZagPixels::Layout l, ZigZagPixels::Origin o, uint8_t p, neoPixelType t);
 		ZigZagPixels(void);
 
 		void setWidth(uint8_t w) { width = w; };
 		void setHeight(uint8_t h) { height = h; };
 		void setLayout(Layout l) { layout = l; };
+		void setLayout(Origin o) { origin = o; };
 
 		uint8_t getWidth() { return width; };
 		uint8_t getHeight() { return height; };
 		Layout getLayout() { return layout; };
+		Origin getOrigin() { return origin; };
 
 		void setPixelColor(uint8_t x, uint8_t y, uint8_t r, uint8_t g, uint8_t b);
 		void setPixelColor(uint8_t x, uint8_t y, uint8_t r, uint8_t g, uint8_t b, uint8_t w);
 		void setPixelColor(uint8_t x, uint8_t y, uint32_t c);
 
+		uint32_t getPixelColor(uint8_t x, uint8_t y);
 
-	private:
+	protected:
 		uint8_t width;
 		uint8_t height;
 		ZigZagPixels::Layout layout;
+		ZigZagPixels::Origin origin;
 
 		uint16_t calcPixelNum(uint8_t x, uint8_t y);
 };
